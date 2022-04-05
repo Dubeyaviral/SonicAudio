@@ -64,18 +64,7 @@ color: #0EAFF2;
 /* home  */
 
 .homeheading{
-    text-align: center;
-    display: block;
-}
-
-#headingBanner{
-    width: 100%;
-    height: 30rem;
-}
-
-#explore{
-    text-align: center;
-    font-size: 2rem;
+    margin-left: 12rem;
     display: block;
 }
 
@@ -85,13 +74,13 @@ color: #0EAFF2;
 
 /* product display */
 .hName{
-    font-size: 2rem;
+    font-size: 1rem;
     padding-bottom: 0; margin: 0;
 }
 
 .product{
-    width: 20rem;
-    height: 20rem;
+    width: 10rem;
+    height: 10rem;
     display: block;
     padding: 1rem;
     padding-top: 0;
@@ -105,35 +94,6 @@ color: #0EAFF2;
 .buy{
     display: inline;
 }
-
-
-    /* login section */
-
-.logindiv{
-    margin: auto;
-  width: 50%;
-  padding: 10px;
-  border: #0EAFF2;
-  border-style: solid;
-  border-width: 5px;
-}
-
-#loginimg{
-    margin-left: 40%;
-    width: 20%;
-    height: 20%;
-}
-
-.loginsmt{
-    margin-top: 1rem;
-    display: inline-block;
-}
-
-#regiimg{
-    width: 20%;
-    height: 2%;
-}
-
     /* footer  */
 footer{
     width: 100%;
