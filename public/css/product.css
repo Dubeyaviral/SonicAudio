@@ -75,31 +75,71 @@ color: #0EAFF2;
 /* product display */
 .hName{
     font-size: 1rem;
-    padding-bottom: 0; margin: 0;
+    padding-bottom: 0; margin: auto;
+    margin-left: 20%;
 }
 
 .product{
-    width: 10rem;
-    height: 10rem;
-    display: block;
+    width: 12rem;
+    height: 12rem;
+    display: inline;
     padding: 1rem;
     padding-top: 0;
 }
 
 .price{
-    margin-right: 30%;
+    margin-right: 10%;
+    margin-left: 30%;
     display: inline-block;
 }
 
-.buy{
-    display: inline;
+.col-sm{
+    width: 11rem;
+    
 }
+
+.container .home{
+    width: 100%;
+}
+/* .buy{
+    display: inline;
+}*/
+
+.home{
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.float-container {
+    
+    padding: 20px;
+}
+
+.float-child1 {
+    width: 70%;
+    float: left;
+    padding: 20px;
+    
+}  
+.float-child2 {
+    width: 30%;
+    float: left;
+    padding: 20px;
+    
+}  
+
     /* footer  */
-footer{
+ footer{
+    position:fixed;
+    bottom: 0;
+    margin-top: 100%;
     width: 100%;
     background-color: #0EAFF2;
     
-}
+} 
+
+
 footer p{
    margin: 0;
    text-align: center;
