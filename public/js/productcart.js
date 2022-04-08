@@ -18,6 +18,23 @@ function ready(){
         var button = addcartbtn[i];
         button.addEventListener('click', addToCartClicked);
     }
+
+    document.getElementsByClassName('btn-purchase')[0].addEventListener('click',purchaseClicked);
+
+}
+
+function purchaseClicked(){
+    var cartItems = document.getElementsByClassName('cart-items')[0];
+    if(!cartItems.hasChildNodes()){
+        alert('Select some items to continue purchase');
+    }
+    else{
+    alert("Thank you for your purchase");
+    while(cartItems.hasChildNodes()){
+        cartItems.removeChild(cartItems.firstChild);
+    }
+    updateCartTotal();
+}
 }
 
 function removeCart(event){
