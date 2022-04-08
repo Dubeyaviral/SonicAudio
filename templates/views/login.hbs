@@ -27,57 +27,27 @@
   </head>
     <body>
       <div class="heading">
-        <nav class="navbar navbar-expand-lg navbar-light  " style="background-color: #e3f2fd;"> 
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#">Sonic<span id="sspan">Audio</span></a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/login">Products</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/about">About Us</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/contact">Contact</a>
-                  </li>
-                  
-                 
-                </ul>
-                <a class="nav-link active" aria-current="page" href="/login">
-                  <button id="loginBtn" class="btn btn-outline-success" type="submit" >Login/Register</button>
-                  </a>
-              </div>
-            </div>
-          </nav>
+        {{>navbar}}
       </div>
 
        <div class="container">
           <div class="screen">
               <div class="screen__content">
                 <h3 id="loginhead">Login In here to order</h3>
-                  <form class="login" action="/product">
+                  <form method="post" action="/login">
                       <div class="login__field">
                           <i class="login__icon fas fa-user"></i>
-                          <input type="text" class="login__input" placeholder=" Email">
+                          <input type="text" class="login__input" placeholder=" Email" name="email" data-validate="Valid email is required: ex@abc.xyz">
                       </div>
                       <div class="login__field">
                           <i class="login__icon fas fa-lock"></i>
-                          <input type="password" class="login__input" placeholder="Password">
+                          <input type="password" class="login__input" placeholder="Password" name="password" data-validate="Password is required">
                       </div>
-                      <a  href="/product">
-                      <button class="button login__submit">
-                          <span class="button__text">Log in</span>
-                      </button></a>	
+                      
+                      					<input type="submit" value="Login" class="btnRegister button login__submit">
                     </form>
                     <a  href="/register">
-                    <button class="button login__submit">
+                    <button class="button login__submit" type="submit">
                         <span class="button__text">Haven't Registered yet, Register Now</span>
                         <i class="button__icon fas fa-chevron-right"></i>
                     </button>	</a>			

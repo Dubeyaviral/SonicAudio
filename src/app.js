@@ -5,7 +5,6 @@ const hbs = require('hbs');
 const bcrypt = require('bcryptjs');
 const cookieParser = require('cookie-parser');
 
-
 const port = process.env.PORT || 8000;
 const app = express();
 
@@ -67,26 +66,50 @@ app.post('/register',async (req,res)=>{
                 password:req.body.password,
                 confirmpassword:req.body.confirmpassword
             });
-            // const token = await customerRegistration.generateAuthToken();
-            console.log("this ran")
-            // res.cookie('jwt',token,{
-            //     expires: new Date(Date.now() + 40000),
-            //     httpOnly:true
-            // });
+            const token = await customerRegistration.generateAuthToken();        
+
+            res.cookie('jwt',token,{
+                expires: new Date(Date.now() + 40000),
+                httpOnly:true
+            });
            
             const registered = await customerRegistration.save()
             console.log("Registration Successfull");
             res.status(201).render('login');
 
         }else{
+            // popup.alert({
+            //     content: 'Password not matching'
+            // });
+
             res.send("password not matching");
         }
     }catch(err){
-        res.status(400).send(`error occurred-> ${err}`);
+        res.status(400).send(`error occurred-> ${err} `);
     }
 });
 
+app.post('/login',async (req,res)=>{
+    try{
+        const email = req.body.email;
+        const password = req.body.password;
+        const useremail = await Registration.findOne({email:email});
+        const isMatch = await bcrypt.compare(password, useremail.password);
+        const token = await useremail.generateAuthToken();
+        res.cookie('jwt', token,{
+            expires:new Date(Date.now() + 30000),
+            httpOnly:true,
+        });
 
+        if(isMatch){
+            res.status(201).render('product');
+        }else{
+            res.send('invalid login credentials');
+        }
+    }catch(err){
+        res.status(400).send("Invalid login credentials");
+    }
+});
 
 app.listen(port,()=>{
     console.log(`listening on port ${port} `);
