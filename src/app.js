@@ -4,6 +4,7 @@ const path = require('path');
 const hbs = require('hbs');
 const bcrypt = require('bcryptjs');
 const cookieParser = require('cookie-parser');
+const auth = require('./middleware/auth');
 
 const port = process.env.PORT || 8000;
 const app = express();
@@ -51,6 +52,23 @@ app.get('/product',(req,res)=>{
     res.render('product');
 });
 
+app.get('/logout', auth, async(req,res)=>{
+    try{
+        // For single user logout
+        // req.user.tokens = req.user.tokens.filter(curElement => {if(curElement.token!=req.token) return curElement;});
+        
+        //logout from all devices
+        req.user.tokens=[];
+        res.clearCookie("jwt");
+        console.log("logged out");
+        await req.user.save();
+        res.send('logged out');
+        
+    }catch(err){
+        res.status(500).send(err);
+    }
+});
+
 app.post('/register',async (req,res)=>{
     try{
         const password = req.body.password;
@@ -69,7 +87,6 @@ app.post('/register',async (req,res)=>{
             const token = await customerRegistration.generateAuthToken();        
 
             res.cookie('jwt',token,{
-                expires: new Date(Date.now() + 40000),
                 httpOnly:true
             });
            
@@ -89,7 +106,7 @@ app.post('/register',async (req,res)=>{
     }
 });
 
-app.post('/login',async (req,res)=>{
+app.post('/login', async (req,res)=>{
     try{
         const email = req.body.email;
         const password = req.body.password;
@@ -97,8 +114,7 @@ app.post('/login',async (req,res)=>{
         const isMatch = await bcrypt.compare(password, useremail.password);
         const token = await useremail.generateAuthToken();
         res.cookie('jwt', token,{
-            expires:new Date(Date.now() + 30000),
-            httpOnly:true,
+            httpOnly:true
         });
 
         if(isMatch){
