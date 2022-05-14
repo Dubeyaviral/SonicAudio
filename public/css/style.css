@@ -147,3 +147,11 @@ footer p{
    line-height: 2.5rem;
    font-size: 1rem;
 }
+
+/* logout page */
+.thnxvisit{
+    margin-left: auto;
+    font-size: medium;
+    text-align: center;
+
+}

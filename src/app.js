@@ -62,7 +62,7 @@ app.get('/logout', auth, async(req,res)=>{
         res.clearCookie("jwt");
         console.log("logged out");
         await req.user.save();
-        res.send('logged out');
+        res.render('logout');
         
     }catch(err){
         res.status(500).send(err);
@@ -95,10 +95,6 @@ app.post('/register',async (req,res)=>{
             res.status(201).render('login');
 
         }else{
-            // popup.alert({
-            //     content: 'Password not matching'
-            // });
-
             res.send("password not matching");
         }
     }catch(err){
