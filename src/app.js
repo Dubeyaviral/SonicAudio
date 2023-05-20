@@ -85,12 +85,12 @@ app.post('/register',async (req,res)=>{
                 confirmpassword:req.body.confirmpassword
             });
             const token = await customerRegistration.generateAuthToken();        
-
+            console.log("here");
             res.cookie('jwt',token,{
                 httpOnly:true
             });
            
-            const registered = await customerRegistration.save()
+            const registered = await customerRegistration.save();
             console.log("Registration Successfull");
             res.status(201).render('login');
 
