@@ -123,6 +123,6 @@ app.post('/login', async (req,res)=>{
     }
 });
 
-app.listen(port || 8000,()=>{
+app.listen(port || 10000,()=>{
     console.log(`listening on port ${port} `);
 })
