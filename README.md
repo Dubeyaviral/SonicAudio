@@ -21,7 +21,7 @@
  
 ## Hosted URL
 
-- https://sonicaudio.herokuapp.com/
+- (https://sonicaudio.onrender.com)
 
 ## Tech Stack used for designing this website
 
